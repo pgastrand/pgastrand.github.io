@@ -1,8 +1,253 @@
 <!DOCTYPE html>
-<html>
-  <head><title>My Homepage</title></head>
-  <body>
-    <h1>Hello, world!</h1>
-    <p>Welcome to my GitHub homepage.</p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Advanced Homepage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .feature-card p {
+            font-size: 0.95em;
+            margin: 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .counter {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .counter h3 {
+            font-size: 2.5em;
+            margin: 10px 0;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            border-radius: 5px;
+            color: #2e7d32;
+            display: none;
+        }
+
+        .message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👋 Hello, World!</h1>
+        <p class="subtitle">Welcome to my advanced GitHub homepage</p>
+
+        <p>This is an enhanced homepage showcasing HTML, CSS, and JavaScript working together to create an interactive experience.</p>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>🎨 Styled</h3>
+                <p>Modern CSS with gradients and animations</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Interactive</h3>
+                <p>JavaScript-powered features and events</p>
+            </div>
+            <div class="feature-card">
+                <h3>📱 Responsive</h3>
+                <p>Works great on all device sizes</p>
+            </div>
+            <div class="feature-card">
+                <h3>🚀 Modern</h3>
+                <p>Built with current web standards</p>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-primary" onclick="handleClick()">Click Me!</button>
+            <button class="btn-secondary" onclick="toggleCounter()">Count: <span id="count">0</span></button>
+        </div>
+
+        <div class="counter" id="counter" style="display: none;">
+            <p>Current Count:</p>
+            <h3 id="counterValue">0</h3>
+        </div>
+
+        <div class="message" id="message">
+            ✨ You clicked the button! Thanks for visiting!
+        </div>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        let counterVisible = false;
+
+        function handleClick() {
+            clickCount++;
+            const message = document.getElementById('message');
+            message.classList.add('show');
+            
+            setTimeout(() => {
+                message.classList.remove('show');
+            }, 3000);
+        }
+
+        function toggleCounter() {
+            counterVisible = !counterVisible;
+            const counter = document.getElementById('counter');
+            const countSpan = document.getElementById('count');
+            const counterValue = document.getElementById('counterValue');
+            
+            if (counterVisible) {
+                clickCount++;
+                counter.style.display = 'block';
+                countSpan.textContent = clickCount;
+                counterValue.textContent = clickCount;
+            } else {
+                counter.style.display = 'none';
+            }
+        }
+
+        // Welcome message on page load
+        window.addEventListener('load', () => {
+            console.log('Welcome to my advanced homepage!');
+        });
+    </script>
+</body>
 </html>
